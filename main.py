@@ -43,6 +43,14 @@ def get_words():
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
+now = datetime.datetime.now()
+start_date = datetime.datetime(2022, 12, 23)
+three_days = datetime.timedelta(days=3)
+if (now - start_date).total_seconds() % (three_days.total_seconds()) == 0:
+    print("It's your turn to work today.")
+else:
+    print("It's not your turn to work today.")
+
 
 client = WeChatClient(app_id, app_secret)
 
