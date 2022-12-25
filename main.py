@@ -34,11 +34,9 @@ def get_zhiban():
  begin_date = datetime.datetime(2022, 12, 23)
  three_days = datetime.timedelta(days=3)
  if (now - begin_date).total_seconds() % (three_days.total_seconds()) == 0:
-   return:
-     print("yes")
+   return True
  else:
-   return:
-     print("no")
+   return False
 
 def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
