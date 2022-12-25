@@ -10,7 +10,7 @@ today = datetime.now()
 start_date = os.environ['2020-12-23']
 city = os.environ['北京']
 birthday = os.environ['10-03']
-zhibanri = os.environ['zhibanri']
+zhiban = os.environ['zhibanri']
 
 app_id = os.environ["wx421f5da2d737da21"]
 app_secret = os.environ["c0064920522e8c84feae5dec0265420b"]
@@ -60,6 +60,6 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
+data = {"zhiban":{"value":get_zhiban()},"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
