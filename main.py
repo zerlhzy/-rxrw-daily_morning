@@ -28,12 +28,6 @@ def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
   return delta.days
 
-def get_zhiban():
- three_days = datetime.timedelta(days=3)
- if delta.total_seconds() % (three_days.total_seconds()) == 0:
-   return True
- else:
-   return False
 
 def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
