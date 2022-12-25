@@ -19,13 +19,13 @@ template_id = os.environ["TEMPLATE_ID"]
 
 
 def get_weather():
-  url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+  url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + 北京
   res = requests.get(url).json()
   weather = res['data']['list'][0]
   return weather['weather'], math.floor(weather['temp'])
 
 def get_count():
-  delta = today - datetime.strptime(start_date, "%Y-%m-%d")
+  delta = today - datetime.strptime(start_date, "2020-12-23")
   return delta.days
 
 def get_birthday():
@@ -43,19 +43,22 @@ def get_words():
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
-now = datetime.datetime.now()
-start_date = datetime.datetime(2022, 12, 23)
-three_days = datetime.timedelta(days=3)
-if (now - start_date).total_seconds() % (three_days.total_seconds()) == 0:
-    print("It's your turn to work today.")
-else:
-    print("It's not your turn to work today.")
+def get_zhiban():
+ now = datetime.datetime.now()
+ start_date = datetime.datetime(2022, 12, 23)
+ three_days = datetime.timedelta(days=3)
+ if (now - start_date).total_seconds() % (three_days.total_seconds()) == 0:
+   return:
+     print("yes")
+ else:
+   return:
+     print("no")
 
 
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
+data = {"zhiban":{"value":get_zhiban()},"weather":{"value":wea},"temperature":{"value":temperature},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
