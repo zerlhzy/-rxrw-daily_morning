@@ -7,7 +7,6 @@ import os
 import random
 
 today = datetime.now()
-zhiban = os.environ['zhibanri']
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
@@ -30,10 +29,8 @@ def get_count():
   return delta.days
 
 def get_zhiban():
- now = datetime.datetime.now()
- begin_date = datetime.datetime(2022, 12, 23)
  three_days = datetime.timedelta(days=3)
- if (now - begin_date).total_seconds() % (three_days.total_seconds()) == 0:
+ if delta.total_seconds() % (three_days.total_seconds()) == 0:
    return True
  else:
    return False
